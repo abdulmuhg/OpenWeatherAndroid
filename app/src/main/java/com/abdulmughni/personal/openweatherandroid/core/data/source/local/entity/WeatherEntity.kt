@@ -14,6 +14,12 @@ data class WeatherEntity(
     @ColumnInfo (name = "id")
     var id: Int? = null,
 
+    @ColumnInfo(name = "lat")
+    var lat: Double? = null,
+
+    @ColumnInfo(name = "lon")
+    var lon: Double? = null,
+
     @ColumnInfo(name = "status")
     var status: String? = null,
 

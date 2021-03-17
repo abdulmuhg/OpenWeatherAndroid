@@ -17,7 +17,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun getWeather(): Flow<ApiResponse<WeatherResponse>> {
         return flow {
             try {
-                val response = apiService.getWeather(appId = "fdf871cedaf3413c6a23230372c30a02", 70, 140)
+                val response = apiService.getWeather(appId = "fdf871cedaf3413c6a23230372c30a02", 70.0, 140.0)
                 emit(ApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
@@ -26,7 +26,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getWeather(lat: Int, lon: Int): Flow<ApiResponse<WeatherResponse>> {
+    suspend fun getWeather(lat: Double, lon: Double): Flow<ApiResponse<WeatherResponse>> {
         return flow {
             try {
                 val response = apiService.getWeather(appId = "fdf871cedaf3413c6a23230372c30a02", lat, lon)

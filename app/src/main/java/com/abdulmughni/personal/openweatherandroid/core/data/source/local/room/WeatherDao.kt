@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WeatherDao {
-    @Query("SELECT * FROM weather WHERE id = 2028164")
-    fun getWeather(): Flow<WeatherEntity>
+    @Query("SELECT * FROM weather WHERE lat LIKE :latitude AND lon LIKE :lon LIMIT 1")
+    fun getWeather(latitude: Double, lon: Double): Flow<WeatherEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWeather(weatherList: WeatherEntity)

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(private val weatherDao: WeatherDao) {
-    fun getWeather(): Flow<WeatherEntity> = weatherDao.getWeather()
+    fun getWeather(lat: Double, lon: Double): Flow<WeatherEntity> = weatherDao.getWeather(lat, lon)
     suspend fun insertWeather(weather: WeatherEntity) =
         weatherDao.insertWeather(weather)
 }

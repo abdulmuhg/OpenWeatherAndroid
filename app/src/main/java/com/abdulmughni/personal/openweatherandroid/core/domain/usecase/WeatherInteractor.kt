@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class WeatherInteractor @Inject constructor(private val weatherRepository: IWeatherRepository) : WeatherUseCase {
-    override fun getWeather(): Flow<Resource<Weather>> = weatherRepository.getCurrentWeather()
-    override fun getWeather(lat: Int, lon: Int): Flow<Resource<Weather>> = weatherRepository.getCurrentWeather(lat, lon)
+    //override fun getWeather(): Flow<Resource<Weather>> = weatherRepository.getCurrentWeather()
+    override fun getWeather(lat: Double, lon: Double): Flow<Resource<Weather>> = weatherRepository.getCurrentWeather(lat, lon)
 }

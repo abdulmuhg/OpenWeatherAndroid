@@ -21,28 +21,28 @@ class WeatherRepository @Inject constructor(
     private val appExecutors: AppExecutors
 ) : IWeatherRepository {
 
-    override fun getCurrentWeather(): Flow<Resource<Weather>> =
+//    override fun getCurrentWeather(): Flow<Resource<Weather>> =
+//        object : NetworkBoundResource<Weather, WeatherResponse>(appExecutors){
+//            override fun loadFromDB(): Flow<Weather> {
+//                return localDataSource.getWeather(0.0,0.0).mapNotNull {
+//                    DataMapper.mapEntitiesToDomain(it) }
+//            }
+//            override fun shouldFetch(data: Weather?): Boolean =
+//                true
+//
+//            override suspend fun createCall(): Flow<ApiResponse<WeatherResponse>> =
+//                remoteDataSource.getWeather()
+//
+//            override suspend fun saveCallResult(data: WeatherResponse) {
+//                val weather = DataMapper.mapResponsesToEntities(data)
+//                localDataSource.insertWeather(weather)
+//            }
+//        }.asFlow()
+
+    override fun getCurrentWeather(lat: Double, lon: Double): Flow<Resource<Weather>> =
         object : NetworkBoundResource<Weather, WeatherResponse>(appExecutors){
             override fun loadFromDB(): Flow<Weather> {
-                return localDataSource.getWeather().mapNotNull {
-                    DataMapper.mapEntitiesToDomain(it) }
-            }
-            override fun shouldFetch(data: Weather?): Boolean =
-                true
-
-            override suspend fun createCall(): Flow<ApiResponse<WeatherResponse>> =
-                remoteDataSource.getWeather()
-
-            override suspend fun saveCallResult(data: WeatherResponse) {
-                val weather = DataMapper.mapResponsesToEntities(data)
-                localDataSource.insertWeather(weather)
-            }
-        }.asFlow()
-
-    override fun getCurrentWeather(lat: Int, lon: Int): Flow<Resource<Weather>> =
-        object : NetworkBoundResource<Weather, WeatherResponse>(appExecutors){
-            override fun loadFromDB(): Flow<Weather> {
-                return localDataSource.getWeather().mapNotNull {
+                return localDataSource.getWeather(lat, lon).mapNotNull {
                     DataMapper.mapEntitiesToDomain(it) }
             }
             override fun shouldFetch(data: Weather?): Boolean =
@@ -52,7 +52,7 @@ class WeatherRepository @Inject constructor(
                 remoteDataSource.getWeather(lat, lon)
 
             override suspend fun saveCallResult(data: WeatherResponse) {
-                val weather = DataMapper.mapResponsesToEntities(data)
+                val weather = DataMapper.mapResponsesToEntities(data, lat, lon)
                 localDataSource.insertWeather(weather)
             }
         }.asFlow()

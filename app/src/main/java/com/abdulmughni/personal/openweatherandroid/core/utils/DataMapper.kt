@@ -7,8 +7,10 @@ import com.abdulmughni.personal.openweatherandroid.core.domain.model.Weather
 
 object DataMapper {
 
-    fun mapResponsesToEntities(input: WeatherResponse?): WeatherEntity = WeatherEntity(
+    fun mapResponsesToEntities(input: WeatherResponse?, lat: Double, lon: Double): WeatherEntity = WeatherEntity(
         id = input?.id!!,
+        lat = lat,
+        lon = lon,
         status = input.weather?.get(0)?.main,
         detail = input.weather?.get(0)?.description,
         icon = input.weather?.get(0)?.icon!!,
@@ -56,6 +58,8 @@ object DataMapper {
     fun mapEntitiesToDomain(inputs: WeatherEntity?): Weather =
         Weather(
             id = inputs?.id,
+            lat = inputs?.lat,
+            lon = inputs?.lon,
             status = inputs?.status,
             detail = inputs?.detail,
             icon = inputs?.icon,
