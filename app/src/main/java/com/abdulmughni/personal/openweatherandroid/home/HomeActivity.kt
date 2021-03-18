@@ -1,6 +1,7 @@
 package com.abdulmughni.personal.openweatherandroid.home
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Criteria
 import android.location.Location
@@ -15,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.abdulmughni.personal.openweatherandroid.R
 import com.abdulmughni.personal.openweatherandroid.core.data.Resource
+import com.abdulmughni.personal.openweatherandroid.core.ui.MapsActivity
 import com.abdulmughni.personal.openweatherandroid.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.math.RoundingMode
@@ -40,11 +42,12 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getLocationPermission()
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+        getLocationPermission()
 
-        getDeviceCoordinate()
-
+        binding.btnMapActivity.setOnClickListener {
+            goToMapActivity()
+        }
     }
 
     private fun getLocationPermission() {
@@ -55,6 +58,7 @@ class HomeActivity : AppCompatActivity() {
             == PackageManager.PERMISSION_GRANTED
         ) {
             locationPermissionGranted = true
+            getDeviceCoordinate()
         } else {
             ActivityCompat.requestPermissions(
                 this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -111,5 +115,9 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun goToMapActivity(){
+        startActivity(Intent(this, MapsActivity::class.java))
     }
 }

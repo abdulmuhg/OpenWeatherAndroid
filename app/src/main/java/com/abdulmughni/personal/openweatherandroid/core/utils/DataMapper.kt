@@ -4,7 +4,6 @@ import com.abdulmughni.personal.openweatherandroid.core.data.source.local.entity
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.response.WeatherResponse
 import com.abdulmughni.personal.openweatherandroid.core.domain.model.Weather
 
-
 object DataMapper {
 
     fun mapResponsesToEntities(input: WeatherResponse?, lat: Double, lon: Double): WeatherEntity = WeatherEntity(
