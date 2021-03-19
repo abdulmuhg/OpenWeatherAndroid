@@ -18,5 +18,7 @@ data class Weather(
     var humidity: Int? = null,
     var windSpeed: Double? = null,
     var timezone: Int? = null,
-    var cityName: String? = null
+    var cityName: String? = null,
+    var sunrise: Int? = null,
+    var sunset: Int? = null
 ) : Parcelable

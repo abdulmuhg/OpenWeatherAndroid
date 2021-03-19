@@ -13,24 +13,23 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <com.google.android.material.textview.MaterialTextView
-        android:textColor="@color/primaryTextColor"
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:textColor="@color/primaryTextColor"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:textColor="@color/primaryTextColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:textColor="@color/primaryTextColor"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

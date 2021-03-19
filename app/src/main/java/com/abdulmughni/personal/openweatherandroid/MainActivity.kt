@@ -3,33 +3,23 @@ package com.abdulmughni.personal.openweatherandroid
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Criteria
-import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.View
-import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.abdulmughni.personal.openweatherandroid.core.data.Resource
 import com.abdulmughni.personal.openweatherandroid.core.ui.MapsActivity
-import com.abdulmughni.personal.openweatherandroid.home.HomeActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import java.math.RoundingMode
-import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -49,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { _ ->
+        fab.setOnClickListener {
             goToMapActivity()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

@@ -1,7 +1,6 @@
 package com.abdulmughni.personal.openweatherandroid.core.data.source.remote
 
 import android.util.Log
-import com.abdulmughni.personal.openweatherandroid.BuildConfig
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.network.ApiResponse
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.network.ApiService
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.response.WeatherResponse

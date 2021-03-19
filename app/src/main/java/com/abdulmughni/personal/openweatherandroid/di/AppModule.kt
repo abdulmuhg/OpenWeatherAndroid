@@ -13,6 +13,6 @@ import dagger.hilt.android.components.ActivityComponent
 abstract class AppModule {
 
     @Binds
-    abstract fun provideTourismUseCase(weatherInteractor: WeatherInteractor): WeatherUseCase
+    abstract fun provideWeatherUseCase(weatherInteractor: WeatherInteractor): WeatherUseCase
 
 }

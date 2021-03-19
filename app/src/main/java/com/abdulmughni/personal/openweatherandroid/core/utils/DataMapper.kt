@@ -20,39 +20,10 @@ object DataMapper {
         humidity = input.main.humidity!!,
         windSpeed = input.wind?.speed!!,
         timezone = input.timezone!!,
-        cityName = input.name!!
+        cityName = input.name!!,
+        sunrise = input.sys?.sunrise!!,
+        sunset = input.sys.sunset!!
     )
-
-//    fun mapResponsesToEntities(input: WeatherResponse?): WeatherEntity = WeatherEntity(
-//        id = 0,
-//        status = "Rain",
-//        detail = "Heavy Rain",
-//        icon = "",
-//        temperature = 283.4,
-//        tempMin = 283.15,
-//        tempMax = 283.15,
-//        feelsLike = 283.11,
-//        humidity = 88,
-//        windSpeed = 2.28,
-//        timezone = 32400,
-//        cityName = "Shuzenji"
-//    )
-
-//    fun mapEntitiesToDomain(inputs: WeatherEntity?): Weather =
-//        Weather(
-//            id = 0,
-//            status = "Rain",
-//            detail = "Heavy Rain",
-//            icon = "",
-//            temperature = 283.4,
-//            tempMin = 283.15,
-//            tempMax = 283.15,
-//            feelsLike = 283.11,
-//            humidity = 88,
-//            windSpeed = 2.28,
-//            timezone = 32400,
-//            cityName = "Shuzenji"
-//        )
 
     fun mapEntitiesToDomain(inputs: WeatherEntity?): Weather =
         Weather(
@@ -69,7 +40,9 @@ object DataMapper {
             humidity = inputs?.humidity,
             windSpeed = inputs?.windSpeed,
             timezone = inputs?.timezone,
-            cityName = inputs?.cityName
+            cityName = inputs?.cityName,
+            sunrise = inputs?.sunrise,
+            sunset = inputs?.sunset
         )
 
     fun mapDomainToEntity(input: Weather) = WeatherEntity(

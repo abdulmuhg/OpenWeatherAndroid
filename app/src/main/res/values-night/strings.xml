@@ -2,4 +2,12 @@
 <resources>
     <string name="something_wrong">Something Wrong</string>
     <string name="search">Search</string>
+    <string name="humidity">"Humidity "</string>
+    <string name="loading">Loading...</string>
+    <string name="move_to_map_button">Move To Map Button</string>
+    <string name="background_image">Background Image</string>
+    <string name="temperature_units">Temperature Units</string>
+    <string name="strike">-</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="wind">Wind</string>
 </resources>
