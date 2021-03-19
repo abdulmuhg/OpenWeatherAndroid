@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface WeatherUseCase {
     //fun getWeather(): Flow<Resource<Weather>>
     fun getWeather(lat: Double, lon: Double): Flow<Resource<Weather>>
+    fun getWeather(lat: Double, lon: Double, units: String): Flow<Resource<Weather>>
 }

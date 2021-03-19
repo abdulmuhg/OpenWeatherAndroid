@@ -46,7 +46,6 @@ class HomeActivity : AppCompatActivity() {
         getLocationPermission()
 
         binding.btnMapActivity.setOnClickListener {
-            goToMapActivity()
         }
     }
 
@@ -117,7 +116,5 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    private fun goToMapActivity(){
-        startActivity(Intent(this, MapsActivity::class.java))
-    }
+
 }

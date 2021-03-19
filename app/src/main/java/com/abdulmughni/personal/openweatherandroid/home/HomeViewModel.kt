@@ -11,6 +11,6 @@ import com.abdulmughni.personal.openweatherandroid.core.domain.usecase.WeatherUs
 import kotlinx.coroutines.flow.Flow
 
 class HomeViewModel @ViewModelInject constructor(private val weatherUseCase: WeatherUseCase) : ViewModel() {
-    //val weather = weatherUseCase.getWeather().asLiveData()
     fun getWeatherGPS(lat: Double, lon: Double) = weatherUseCase.getWeather(lat, lon).asLiveData()
+    fun getWeather(lat: Double, lon: Double, units: String) = weatherUseCase.getWeather(lat, lon, units).asLiveData()
 }

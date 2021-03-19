@@ -15,4 +15,12 @@ interface ApiService {
         @Query("lat") lat: Double,
         @Query("lon") lon: Double
     ): WeatherResponse
+
+    @GET("weather")
+    suspend fun getWeather(
+            @Query("appid") appId: String,
+            @Query("lat") lat: Double,
+            @Query("lon") lon: Double,
+            @Query("units") units: String
+    ): WeatherResponse
 }

@@ -1,6 +1,7 @@
 package com.abdulmughni.personal.openweatherandroid.core.data.source.remote
 
 import android.util.Log
+import com.abdulmughni.personal.openweatherandroid.BuildConfig
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.network.ApiResponse
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.network.ApiService
 import com.abdulmughni.personal.openweatherandroid.core.data.source.remote.response.WeatherResponse
@@ -14,10 +15,10 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getWeather(): Flow<ApiResponse<WeatherResponse>> {
+    suspend fun getWeather(lat: Double, lon: Double): Flow<ApiResponse<WeatherResponse>> {
         return flow {
             try {
-                val response = apiService.getWeather(appId = "fdf871cedaf3413c6a23230372c30a02", 70.0, 140.0)
+                val response = apiService.getWeather(ApiService.API_KEY, lat, lon)
                 emit(ApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
@@ -26,10 +27,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getWeather(lat: Double, lon: Double): Flow<ApiResponse<WeatherResponse>> {
+    suspend fun getWeather(lat: Double, lon: Double, units: String): Flow<ApiResponse<WeatherResponse>> {
         return flow {
             try {
-                val response = apiService.getWeather(appId = "fdf871cedaf3413c6a23230372c30a02", lat, lon)
+                val response = apiService.getWeather(ApiService.API_KEY, lat, lon, units)
                 emit(ApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
